@@ -1,16 +1,16 @@
 #include <memory.h>
-#include <conio.h>
+//#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <dos.h>
+//#include <dos.h>
 #include <time.h>
 
 void ShowAll(int ply);//
 
-#define U64 unsigned __int64 
-#define BITBOARD unsigned __int64 
+#define U64 u_int64_t
+#define BITBOARD u_int64_t 
 
 #define A1	0
 #define B1	1

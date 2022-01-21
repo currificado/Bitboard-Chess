@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdint.h>
 #include "globals.h"
 
 const BITBOARD debruijn64 = 0x07EDD5E59A4E28C2;
@@ -77,7 +78,7 @@ void PrintCell(int x,BITBOARD bb);
 
 void SetBit(BITBOARD& bb, int square)
 {
-bb |= (1ui64 << square);
+bb |= (UINT64_C(1) << square);
 }
 
 void SetBitFalse(BITBOARD& bb, int square)

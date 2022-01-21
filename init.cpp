@@ -459,7 +459,7 @@ void ShowAll(int ply)
 {
 
 move *g;
-DisplayBoard();
+//DisplayBoard();
 memset(done, 0, sizeof(done));
 
           printf(" ply ");
@@ -495,7 +495,7 @@ memset(done, 0, sizeof(done));
     }
  printf("\n");
  
-  _getch();
+  getchar();
 }
 
 int GetBest(int ply)
