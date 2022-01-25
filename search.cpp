@@ -52,7 +52,7 @@ printf("ply      nodes  score  pv\n");
 for (int i = 1; i <= max_depth; ++i) 
 {
 	currentmax = i;
-	if(fixed_depth==0 && max_depth>1)
+	//if(fixed_depth==0 && max_depth>1)
 	if(fixed_time==1)
 	{
 		if(GetTime() >= start_time + max_time)
@@ -191,9 +191,11 @@ for (int i = first_move[ply]; i < first_move[ply + 1]; ++i)
 	{
 		if (x >= beta)
 		{
-			if(!(mask[move_list[i].dest] & bit_all))
+			if(!(mask[move_list[i].dest] & bit_all)) 
+			{
 				history[move_list[i].start][move_list[i].dest] += depth;
 				AddHash(side, move_list[i]);
+			}
 			return beta;
 		}
 	alpha = x;

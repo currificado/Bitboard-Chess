@@ -33,6 +33,7 @@ void RandomizeHash()
 {
 int p,x;
 for(p=0;p<6;p++)
+{
 	for(x=0;x<64;x++)
 	{
 		hash[0][p][x] = Random(HASHSIZE);
@@ -41,6 +42,7 @@ for(p=0;p<6;p++)
 		lock[1][p][x]= Random(HASHSIZE);
 	}
 	hashpos[0] = new hashp[MAXHASH];
+}
 hashpos[1] = new hashp[MAXHASH];
 }
 /*
