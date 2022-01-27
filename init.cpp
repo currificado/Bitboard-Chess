@@ -119,24 +119,24 @@ int Flip[64] =
 int pawn_score[64] = 
 {
 	  0,   0,   0,   0,   0,   0,   0,   0,
-      0,   2,   4, -12, -12,   4,   2,   0,
-      0,   2,   4,   4,   4,   4,   2,   0,
-      0,   2,   4,   8,   8,   4,   2,   0,
-      0,   2,   4,   8,   8,   4,   2,   0,
-      4,   8,  10,  16,  16,  10,   8,   4,
-    100, 100, 100, 100, 100, 100, 100, 100,
+	  0,   2,   4, -12, -12,   4,   2,   0,
+	  0,   2,   4,   4,   4,   4,   2,   0,
+	  0,   2,   4,   8,   8,   4,   2,   0,
+	  0,   2,   4,   8,   8,   4,   2,   0,
+	  4,   8,  10,  16,  16,  10,   8,   4,
+	100, 100, 100, 100, 100, 100, 100, 100,
 	  0,   0,   0,   0,   0,   0,   0,   0
 };
 
 int knight_score[64] = 
 {
-	-30, -20, -10,  -8,  -8, -10, -20, -30,
-	-16, -6,   -2,   0,   0,   -2, -6, -16,
-	-8,   -2,   4,   6,   6,   4,   -2, -8,
-	-5,   0,   6,   8,   8,   6,   0, -5,
-	-5,   0,   6,   8,   8,   6,   0, -5,
-	-10,   -2,   4,   6,   6,   4,   -2, -10,
-	-20, -10,   -2,   0,   0,   -2, -10, -20,
+	 -30, -20, -10, -8, -8, -10, -20,  -30,
+	 -16,  -6,  -2,  0,  0,  -2,  -6,  -16,
+	  -8,  -2,   4,  6,  6,   4,  -2,   -8,
+	  -5,   0,   6,  8,  8,   6,   0,   -5,
+	  -5,   0,   6,  8,  8,   6,   0,   -5,
+	 -10,  -2,   4,  6,  6,   4,  -2,  -10,
+	 -20, -10,  -2,  0,  0,  -2, -10,  -20,
 	-150, -20, -10, -5, -5, -10, -20, -150
 };
 
@@ -154,62 +154,62 @@ int bishop_score[64] =
 
 int rook_score[64] = 
 {
-	4, 4,  4,  6, 6,  4, 4, 4,
-	0, 0,  0,  0, 0,  0, 0, 0,
-	0, 0,  0,  0, 0,  0, 0, 0,
-	0, 0,  0,  0, 0,  0, 0, 0,
-	0, 0,  0,  0, 0,  0, 0, 0,
-	0, 0,  0,  0, 0,  0, 0, 0,
+	 4,  4,  4,  6,  6,  4,  4,  4,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
 	20, 20, 20, 20, 20, 20, 20, 20,
 	10, 10, 10, 10, 10, 10, 10, 10
 };
 
 int queen_score[64] = 
 {
-    -10, -10,  -6,  -4,  -4,  -6, -10, -10,
-	-10,   2,   2,   2,   2,   2,   2, -10,
-	  2,   2,   2,   3,   3,   2,   2,   2,
-	  2,   2,   3,   4,   4,   3,   2,   2,
-	  2,   2,   3,   4,   4,   3,   2,   2,
-	  2,   2,   2,   3,   3,   2,   2,   2,
-	-10,   2,   2,   2,   2,   2,   2, -10,
-	-10, -10,   2,   2,   2,   2, -10, -10
+	-10, -10,  -6,  -4, -4, -6, -10, -10,
+	-10,   2,   2,   2,  2,  2,   2, -10,
+	  2,   2,   2,   3,  3,  2,   2,   2,
+	  2,   2,   3,   4,  4,  3,   2,   2,
+	  2,   2,   3,   4,  4,  3,   2,   2,
+	  2,   2,   2,   3,  3,  2,   2,   2,
+	-10,   2,   2,   2,  2,  2,   2, -10,
+	-10, -10,   2,   2,  2,  2, -10, -10
 };
 
 int king_score[64] = 
 {
-     20,  20,  20, -40,  10, -60,  20,  20,     
-	 15,  20, -25, -30, -30, -45,  20,  15,   
+	 20,  20,  20, -40,  10, -60,  20,  20,
+	 15,  20, -25, -30, -30, -45,  20,  15,
 	-48, -48, -48, -48, -48, -48, -48, -48,
-    -48, -48, -48, -48, -48, -48, -48, -48,
-    -48, -48, -48, -48, -48, -48, -48, -48,
-    -48, -48, -48, -48, -48, -48, -48, -48,
-    -48, -48, -48, -48, -48, -48, -48, -48,
-    -48, -48, -48, -48, -48, -48, -48, -48
+	-48, -48, -48, -48, -48, -48, -48, -48,
+	-48, -48, -48, -48, -48, -48, -48, -48,
+	-48, -48, -48, -48, -48, -48, -48, -48,
+	-48, -48, -48, -48, -48, -48, -48, -48,
+	-48, -48, -48, -48, -48, -48, -48, -48
 };
 
 int king_endgame_score[64] = 
 {
-	  0,   8,  16,  18,  18,  16,  8,   0,
-	  8,  16,  24,  32,  32,  24,  16,  8,
-	 16,  24,  32,  40,  40,  32,  24,  16,
-	 25,  32,  40,  48,  48,  40,  32,  25,
-	 25,  32,  40,  48,  48,  40,  32,  25,
-	 16,  24,  32,  40,  40,  32,  24,  16,
-	 8,  16,  24,  32,  32,  24,  16,  8,
-	  0,  8,  16,  18,  18,  16,  8,   0
+	 0,  8, 16, 18, 18, 16,  8,  0,
+	 8, 16, 24, 32, 32, 24, 16,  8,
+	16, 24, 32, 40, 40, 32, 24, 16,
+	25, 32, 40, 48, 48, 40, 32, 25,
+	25, 32, 40, 48, 48, 40, 32, 25,
+	16, 24, 32, 40, 40, 32, 24, 16,
+	 8, 16, 24, 32, 32, 24, 16,  8,
+	 0,  8, 16, 18, 18, 16,  8,  0
 };
 
 int passed_score[64] = 
 {
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	60,  60,  60,  60  ,60, 60, 60, 60,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	60, 60, 60, 60, 60, 60, 60, 60,
 	30, 30, 30, 30, 30, 30, 30, 30,
-	15, 15, 15, 15,15, 15, 15, 15, 
-	8, 8, 8, 8, 8, 8, 8, 8,
-	8, 8, 8, 8, 8, 8, 8, 8,
-	0, 0, 0, 0, 0, 0, 0, 0
+	15, 15, 15, 15, 15, 15, 15, 15,
+	 8,  8,  8,  8,  8,  8,  8,  8,
+	 8,  8,  8,  8,  8,  8,  8,  8,
+	 0,  0,  0,  0,  0,  0,  0,  0
 };
 
 /* This is the castle_mask array. We can use it to determine
@@ -229,7 +229,7 @@ int castle_mask[64] = {//reversed
 	15, 15, 15, 15, 15, 15, 15, 15,
 	15, 15, 15, 15, 15, 15, 15, 15,
 	15, 15, 15, 15, 15, 15, 15, 15,
-	7, 15, 15, 15,  3, 15, 15, 11
+	 7, 15, 15, 15,  3, 15, 15, 11
 };
 
 int rank[2][64];
@@ -242,29 +242,27 @@ The board is flipped for the Black scores.
 */
 void SetTables()
 {
+	for(int x=0;x<64;x++)
+	{
+		square_score[0][P][x] = pawn_score[x] + 100;
+		square_score[0][N][x] = knight_score[x] + 300;
+		square_score[0][B][x] = bishop_score[x] + 300;
+		square_score[0][R][x] = rook_score[x] + 500;
+		square_score[0][Q][x] = queen_score[x] + 900;
+		square_score[0][K][x] = king_score[x];
 
-for(int x=0;x<64;x++)
-{
-    square_score[0][P][x] = pawn_score[x] + 100;
-    square_score[0][N][x] = knight_score[x] + 300;
-    square_score[0][B][x] = bishop_score[x] + 300;
-	square_score[0][R][x] = rook_score[x] + 500;
-    square_score[0][Q][x] = queen_score[x] + 900;
-    square_score[0][K][x] = king_score[x];
+		square_score[1][P][x] = pawn_score[Flip[x]] + 100;
+		square_score[1][N][x] = knight_score[Flip[x]] + 300;
+		square_score[1][B][x] = bishop_score[Flip[x]] + 300;
+		square_score[1][R][x] = rook_score[Flip[x]] + 500;
+		square_score[1][Q][x] = queen_score[Flip[x]] + 900;
+		square_score[1][K][x] = king_score[Flip[x]];
 
-    square_score[1][P][x] = pawn_score[Flip[x]] + 100;
-    square_score[1][N][x] = knight_score[Flip[x]] + 300;
-    square_score[1][B][x] = bishop_score[Flip[x]] + 300;
-	square_score[1][R][x] = rook_score[Flip[x]] + 500;
-    square_score[1][Q][x] = queen_score[Flip[x]] + 900;
-	square_score[1][K][x] = king_score[Flip[x]];
-
-	king_endgame[0][x] = king_endgame_score[x] - square_score[0][K][x];
-	king_endgame[1][x] = king_endgame_score[x] - square_score[1][K][x];
-	passed[0][x] = passed_score[Flip[x]];
-	passed[1][x] = passed_score[x];
-}
-
+		king_endgame[0][x] = king_endgame_score[x] - square_score[0][K][x];
+		king_endgame[1][x] = king_endgame_score[x] - square_score[1][K][x];
+		passed[0][x] = passed_score[Flip[x]];
+		passed[1][x] = passed_score[x];
+	}
 }
 /*
 
@@ -273,28 +271,28 @@ Sets up variables for a new game.
 */
 void InitBoard()
 {
-int x;
-for(x=0;x<64;x++)
-{
-	board[x]=EMPTY;
-}
-memset(bit_pieces,0,sizeof(bit_pieces));
-memset(bit_units,0,sizeof(bit_units));
-bit_all = 0;
+	int x;
+	for(x=0;x<64;x++)
+	{
+		board[x]=EMPTY;
+	}
+	memset(bit_pieces,0,sizeof(bit_pieces));
+	memset(bit_units,0,sizeof(bit_units));
+	bit_all = 0;
 
-for (x = 0; x < 64; ++x) 
-{
-	if(init_board[x]<6)
-		AddPiece(init_color[x],init_board[x],x);
-}
-side = 0;
-xside = 1;
-fifty = 0;
-castle = 15;
-ply = 0;
-hply = 0;
-first_move[0] = 0;
-turn = 0;
+	for (x = 0; x < 64; ++x)
+	{
+		if(init_board[x]<6)
+			AddPiece(init_color[x],init_board[x],x);
+	}
+	side = 0;
+	xside = 1;
+	fifty = 0;
+	castle = 15;
+	ply = 0;
+	hply = 0;
+	first_move[0] = 0;
+	turn = 0;
 }
 /*
 
@@ -310,14 +308,14 @@ void NewPosition()
 	for(int i=0;i<64;i++)
 	{
 		if(board[i] < 6)
-		{   
+		{
 			if(bit_units[0] & mask[i]) c = 0;
 			if(bit_units[1] & mask[i]) c = 1;
 			AddPiece(c,board[i],i);
 		}
 	}
 	currentkey = GetKey();
-    currentlock = GetLock();
+	currentlock = GetLock();
 }
 /*
 
@@ -326,8 +324,8 @@ Alg displays a move.
 */
 void Alg(int a,int b)
 {
-Algebraic(a);
-Algebraic(b);
+	Algebraic(a);
+	Algebraic(b);
 }
 /*
 
@@ -355,166 +353,166 @@ void SetMoves()
 	int y;
 	nodes = 1;
 
-for(int x=0;x<64;x++)
-{
-	k = 0;
-	if(row[x]<6 && col[x]<7) 
-		knight_moves[x][k++] =  x+17;
-	if(row[x]<7 && col[x]<6) 
-		knight_moves[x][k++] =  x+10;
-	if(row[x]<6 && col[x]>0) 
-		knight_moves[x][k++] =  x+15;
-	if(row[x]<7 && col[x]>1) 
-		knight_moves[x][k++] =  x+6;
-	if(row[x]>1 && col[x]<7) 
-		knight_moves[x][k++] =  x-15;
-	if(row[x]>0 && col[x]<6) 
-		knight_moves[x][k++] =  x-6;
-	if(row[x]>1 && col[x]>0) 
-		knight_moves[x][k++] =  x-17;
-	if(row[x]>0 && col[x]>1) 
-		knight_moves[x][k++] =  x-10;
-	knight_moves[x][k] = -1;
-}
-for(int x=0;x<64;x++)
-{
-	k = 0;
-	while(knight_moves[x][k] > -1)
+	for(int x=0;x<64;x++)
 	{
-		bit_knightmoves[x] |= mask[knight_moves[x][k]]; 
-		k++;
+		k = 0;
+		if(row[x]<6 && col[x]<7)
+			knight_moves[x][k++] =  x+17;
+		if(row[x]<7 && col[x]<6)
+			knight_moves[x][k++] =  x+10;
+		if(row[x]<6 && col[x]>0)
+			knight_moves[x][k++] =  x+15;
+		if(row[x]<7 && col[x]>1)
+			knight_moves[x][k++] =  x+6;
+		if(row[x]>1 && col[x]<7)
+			knight_moves[x][k++] =  x-15;
+		if(row[x]>0 && col[x]<6)
+			knight_moves[x][k++] =  x-6;
+		if(row[x]>1 && col[x]>0)
+			knight_moves[x][k++] =  x-17;
+		if(row[x]>0 && col[x]>1)
+			knight_moves[x][k++] =  x-10;
+		knight_moves[x][k] = -1;
 	}
-}
-for(int x=0;x<64;x++)
-{
-	k = 0;
-
-	for(int z=0;z<8;z++)
+	for(int x=0;x<64;x++)
 	{
-		qrb_moves[x][z] = -1;
+		k = 0;
+		while(knight_moves[x][k] > -1)
+		{
+			bit_knightmoves[x] |= mask[knight_moves[x][k]];
+			k++;
+		}
 	}
-		
-	if(col[x]>0) qrb_moves[x][WEST]=x-1;
-	if(col[x]<7) qrb_moves[x][EAST]=x+1;
-	if(row[x]>0) qrb_moves[x][SOUTH]=x-8;
-	if(row[x]<7) qrb_moves[x][NORTH]=x+8;
-	if(col[x]<7 && row[x]<7) qrb_moves[x][NE]=x+9;
-	if(col[x]>0 && row[x]<7) qrb_moves[x][NW]=x+7;
-	if(col[x]>0 && row[x]>0) qrb_moves[x][SW]=x-9;
-	if(col[x]<7 && row[x]>0) qrb_moves[x][SE]=x-7;
-
-    y=0;
-	if(col[x]>0) 
-		king_moves[x][y++]=x-1;
-	if(col[x]<7) 
-		king_moves[x][y++]=x+1;
-	if(row[x]>0) 
-		king_moves[x][y++]=x-8;
-	if(row[x]<7) 
-		king_moves[x][y++]=x+8;
-	if(col[x]<7 && row[x]<7) 
-		king_moves[x][y++]=x+9;
-	if(col[x]>0 && row[x]<7) 
-		king_moves[x][y++]=x+7;
-	if(col[x]>0 && row[x]>0) 
-		king_moves[x][y++]=x-9;
-	if(col[x]<7 && row[x]>0) 
-		king_moves[x][y++]=x-7;
-	king_moves[x][y] = -1;
-}
-for(int x=0;x<64;x++)
-{
-	bit_bishopmoves[x] = 0;
-	bit_rookmoves[x] = 0;
-	bit_queenmoves[x] = 0;
-
-	for(int y=0;y<64;y++)
+	for(int x=0;x<64;x++)
 	{
-		if(x==y)
-			continue;
-		if(nwdiag[x]==nwdiag[y] || nediag[x]==nediag[y])
-			bit_bishopmoves[x] |= mask[y];
-		if(row[x]==row[y] || col[x]==col[y])
-			bit_rookmoves[x] |= mask[y];
-		if(nwdiag[x]==nwdiag[y] || nediag[x]==nediag[y] || row[x]==row[y] || col[x]==col[y])
-			bit_queenmoves[x] |= mask[y];
-	}
-}
-for(int x=0;x<64;x++)
-{
-	k = 0;
-	while(king_moves[x][k] > -1)
-	{
-		bit_kingmoves[x] |= mask[king_moves[x][k]]; 
-		k++;
-	}
-}
+		k = 0;
 
-nodes = 0;
+		for(int z=0;z<8;z++)
+		{
+			qrb_moves[x][z] = -1;
+		}
+
+		if(col[x]>0) qrb_moves[x][WEST]=x-1;
+		if(col[x]<7) qrb_moves[x][EAST]=x+1;
+		if(row[x]>0) qrb_moves[x][SOUTH]=x-8;
+		if(row[x]<7) qrb_moves[x][NORTH]=x+8;
+		if(col[x]<7 && row[x]<7) qrb_moves[x][NE]=x+9;
+		if(col[x]>0 && row[x]<7) qrb_moves[x][NW]=x+7;
+		if(col[x]>0 && row[x]>0) qrb_moves[x][SW]=x-9;
+		if(col[x]<7 && row[x]>0) qrb_moves[x][SE]=x-7;
+
+		y=0;
+		if(col[x]>0)
+			king_moves[x][y++]=x-1;
+		if(col[x]<7)
+			king_moves[x][y++]=x+1;
+		if(row[x]>0)
+			king_moves[x][y++]=x-8;
+		if(row[x]<7)
+			king_moves[x][y++]=x+8;
+		if(col[x]<7 && row[x]<7)
+			king_moves[x][y++]=x+9;
+		if(col[x]>0 && row[x]<7)
+			king_moves[x][y++]=x+7;
+		if(col[x]>0 && row[x]>0)
+			king_moves[x][y++]=x-9;
+		if(col[x]<7 && row[x]>0)
+			king_moves[x][y++]=x-7;
+		king_moves[x][y] = -1;
+	}
+	for(int x=0;x<64;x++)
+	{
+		bit_bishopmoves[x] = 0;
+		bit_rookmoves[x] = 0;
+		bit_queenmoves[x] = 0;
+
+		for(int y=0;y<64;y++)
+		{
+			if(x==y)
+				continue;
+			if(nwdiag[x]==nwdiag[y] || nediag[x]==nediag[y])
+				bit_bishopmoves[x] |= mask[y];
+			if(row[x]==row[y] || col[x]==col[y])
+				bit_rookmoves[x] |= mask[y];
+			if(nwdiag[x]==nwdiag[y] || nediag[x]==nediag[y] || row[x]==row[y] || col[x]==col[y])
+				bit_queenmoves[x] |= mask[y];
+		}
+	}
+	for(int x=0;x<64;x++)
+	{
+		k = 0;
+		while(king_moves[x][k] > -1)
+		{
+			bit_kingmoves[x] |= mask[king_moves[x][k]];
+			k++;
+		}
+	}
+
+	nodes = 0;
 }
 /*dont need below here*/
 int done[100];
 int GetBest(int ply);//
+
 void ShowAll(int ply)
 {
+	move *g;
+	//DisplayBoard();
+	memset(done, 0, sizeof(done));
 
-move *g;
-//DisplayBoard();
-memset(done, 0, sizeof(done));
+	printf(" ply ");
+	printf("%d",ply);
+	printf(" nodes ");
+	printf("%d",nodes);
+	printf(" side ");
+	printf("%d",side);
+	printf(" xside ");
+	printf("%d",xside);
+	printf("\n");
 
-          printf(" ply ");
-        printf("%d",ply);
-        printf(" nodes ");
-        printf("%d",nodes);
-        printf(" side ");
-        printf("%d",side);
-        printf(" xside ");
-        printf("%d",xside);
-        printf("\n");
-  
-	 printf(" one %d ",first_move[ply]);
-	  printf(" two %d ",first_move[ply+1]);
-	  Alg(move_list[first_move[0]].start,move_list[first_move[0]].dest);
-			
-        printf("\n");
- 
-     int j;
-  for(int i=first_move[ply];i<first_move[ply+1];i++)
-  //     for(int i=first_move[ply+1];i<first_move[ply + 2];i++)
-    {
-        j = GetBest(ply);
-        {
-        //how dest display current line?
-        g = &move_list[j];
-        printf("%s",MoveString(move_list[j].start,move_list[j].dest,move_list[j].promote));
-        printf(" ");
-        printf(" score ");
-        printf("%d",g->score);
-        printf("\n");
-        }
-    }
- printf("\n");
- 
-  getchar();
+	printf(" one %d ",first_move[ply]);
+	printf(" two %d ",first_move[ply+1]);
+	Alg(move_list[first_move[0]].start,move_list[first_move[0]].dest);
+
+	printf("\n");
+
+	int j;
+	for(int i=first_move[ply];i<first_move[ply+1];i++)
+	//     for(int i=first_move[ply+1];i<first_move[ply + 2];i++)
+	{
+		j = GetBest(ply);
+		{
+		//how dest display current line?
+		g = &move_list[j];
+		printf("%s",MoveString(move_list[j].start,move_list[j].dest,move_list[j].promote));
+		printf(" ");
+		printf(" score ");
+		printf("%d",g->score);
+		printf("\n");
+		}
+	}
+	printf("\n");
+
+	getchar();
 }
 
 int GetBest(int ply)
 {
-move *g;
-int bestscore = -100000000;
-int best = 0;
-  for(int i=0;i<first_move[ply+1]-first_move[ply];i++)
-  {
-    if(done[i] == 1) continue;
-    g = &move_list[first_move[ply] + i];
-    if(g->start == 0 && g->dest == 0)
-      continue;//
-    if(g->score > bestscore)
-    {
-        bestscore= g->score;
-        best = i;
-    }
-  }
-  if(best<1000) done[best]=1;//1000?
-  return first_move[ply]+best;
+	move *g;
+	int bestscore = -100000000;
+	int best = 0;
+	for(int i=0;i<first_move[ply+1]-first_move[ply];i++)
+	{
+		if(done[i] == 1) continue;
+		g = &move_list[first_move[ply] + i];
+		if(g->start == 0 && g->dest == 0)
+			continue;//
+		if(g->score > bestscore)
+		{
+			bestscore= g->score;
+			best = i;
+		}
+	}
+	if(best<1000) done[best]=1;//1000?
+	return first_move[ply]+best;
 }

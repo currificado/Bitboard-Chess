@@ -6,18 +6,19 @@
 #include <string.h>
 //#include <dos.h>
 #include <time.h>
+#include <stdint.h>
 
 void ShowAll(int ply);//
 
-#define U64 u_int64_t
-#define BITBOARD u_int64_t 
+#define U64 uint64_t
+#define BITBOARD uint64_t
 
 #define A1	0
 #define B1	1
 #define C1	2
 #define D1	3
 #define E1	4
-#define F1  5
+#define F1	5
 #define G1	6
 #define H1	7
 
@@ -116,7 +117,7 @@ typedef struct {
 	int dest;
 	int promote;
 	int score;
-  } move;
+} move;
 
 typedef struct {
 	int start;
@@ -295,7 +296,3 @@ int GetHashDefence(const int s,const int half);
 int NextBit(BITBOARD bb);
 
 void PrintBitBoard(BITBOARD bb);
-
-
-
-

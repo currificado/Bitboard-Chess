@@ -2,7 +2,7 @@
 
 #include "globals.h"
 
-void SetHashMove();	
+void SetHashMove();
 void DisplayPV(int i);
 
 jmp_buf env;
@@ -23,71 +23,71 @@ After each iteration the principal variation is then displayed.
 */
 void think()
 {
-int x;
+	int x;
 
-stop_search = false;
+	stop_search = false;
 
-setjmp(env);
-if (stop_search) 
-{
-	while (ply)
-		TakeBack();
-	return;
-}
-if(fixed_time==0)
-{
-	if (Attack(xside,NextBit(bit_pieces[side][K])))
-		max_time = max_time/2;
-}
-start_time = GetTime();
-stop_time = start_time + max_time;
-
-ply = 0;
-nodes = 0;
-   
-NewPosition();
-memset(history, 0, sizeof(history));	
-printf("ply      nodes  score  pv\n");
-
-for (int i = 1; i <= max_depth; ++i) 
-{
-	currentmax = i;
-	//if(fixed_depth==0 && max_depth>1)
-	if(fixed_time==1)
+	setjmp(env);
+	if (stop_search)
 	{
-		if(GetTime() >= start_time + max_time)
+		while (ply)
+			TakeBack();
+		return;
+	}
+	if(fixed_time==0)
+	{
+		if (Attack(xside,NextBit(bit_pieces[side][K])))
+			max_time = max_time/2;
+	}
+	start_time = GetTime();
+	stop_time = start_time + max_time;
+
+	ply = 0;
+	nodes = 0;
+
+	NewPosition();
+	memset(history, 0, sizeof(history));
+	printf("ply      nodes  score  pv\n");
+
+	for (int i = 1; i <= max_depth; ++i)
+	{
+		currentmax = i;
+		//if(fixed_depth==0 && max_depth>1)
+		if(fixed_time==1)
+		{
+			if(GetTime() >= start_time + max_time)
+			{
+				stop_search = true;
+				return;
+			}
+		}
+		else if(GetTime() >= start_time + max_time/4)
 		{
 			stop_search = true;
-   			return;
+			return;
+		}
+
+		x = Search(-10000, 10000, i);
+
+		printf("%d %d %d %d ", i, x, (GetTime() - start_time) / 10, nodes);
+
+		if(LookUp(side))
+		{
+			DisplayPV(i);
+		}
+		else
+		{
+			move_start = 0;
+			move_dest = 0;
+		}
+		printf("\n");
+		fflush(stdout);
+
+		if (x > 9000 || x < -9000)
+		{
+			break;
 		}
 	}
-	else if(GetTime() >= start_time + max_time/4)
-    {
-		stop_search = true;
- 		return;
-    }
-
-    x = Search(-10000, 10000, i);
-
-	printf("%d %d %d %d ", i, x, (GetTime() - start_time) / 10, nodes);
-
-	if(LookUp(side))
-	{
-		DisplayPV(i);
-	}
-	else
-	{
-		move_start = 0;
-		move_dest = 0;
-	}
-	printf("\n");
-	fflush(stdout);
-
-	if (x > 9000 || x < -9000)
-	{
-		break;
-	}
-}
 }
 /*
 
@@ -132,45 +132,45 @@ int Search(int alpha, int beta, int depth)
 	if (ply > MAX_PLY-2)
 		return Eval();
 
-move bestmove;
+	move bestmove;
 
-int bestscore = -10001;
+	int bestscore = -10001;
 
-int check = 0;
+	int check = 0;
 
-if (Attack(xside,NextBit(bit_pieces[side][K]))) 
-{
-	check = 1;
-}
-Gen(side,xside);
+	if (Attack(xside,NextBit(bit_pieces[side][K])))
+	{
+		check = 1;
+	}
+	Gen(side,xside);
 
-if(LookUp(side))
-  SetHashMove();
+	if(LookUp(side))
+	SetHashMove();
 
-int c = 0;
-int x;
-int d;
+	int c = 0;
+	int x;
+	int d;
 
 for (int i = first_move[ply]; i < first_move[ply + 1]; ++i) 
 {
-		Sort(i);
+	Sort(i);
 
-		if (!MakeMove(move_list[i].start,move_list[i].dest))
-		{
-			continue;
-		}
-		c++;
-	
+	if (!MakeMove(move_list[i].start,move_list[i].dest))
+	{
+		continue;
+	}
+	c++;
+
 	if (Attack(xside,NextBit(bit_pieces[side][K]))) 
 	{
 		d = depth;
 	}
 	else
 	{
-	   d = depth - 3;
+	d = depth - 3;
 	if(move_list[i].score > CAPTURE_SCORE || c==1 || check==1)
 	{
-	   d = depth - 1;
+	d = depth - 1;
 	}
 	else if(move_list[i].score > 0) 
 	{
@@ -209,8 +209,8 @@ for (int i = first_move[ply]; i < first_move[ply + 1]; ++i)
 		}
 		else
 			return 0;
-	    }
-	
+		}
+
 	if (fifty >= 100)
 		return 0;
 	AddHash(side, bestmove);
@@ -226,60 +226,60 @@ If so, the material gain is added to the score.
 */
 int CaptureSearch(int alpha,int beta)
 {
-nodes++;
+	nodes++;
 
-int x = Eval();
+	int x = Eval();
 
-if (x > alpha)
-{
-	if(x >= beta)
-	{	
-		return beta;
+	if (x > alpha)
+	{
+		if(x >= beta)
+		{
+			return beta;
+		}
+		alpha = x;
 	}
-	alpha = x;
-}
-else if(x + 900 < alpha)
+	else if(x + 900 < alpha)
+		return alpha;
+
+	int score = 0, bestmove = 0;
+	int best = 0;
+
+	GenCaptures(side,xside);
+
+	for (int i = first_move[ply]; i < first_move[ply + 1]; ++i)
+	{
+			Sort(i);
+
+			if(x + piece_value[board[move_list[i].dest]] < alpha)
+			{
+				continue;
+			}
+
+			score = ReCaptureSearch(move_list[i].start, move_list[i].dest);
+
+			if(score>best)
+			{
+				best = score;
+				bestmove = i;
+			}
+	}
+
+	if(best>0)
+	{
+		x += best;
+	}
+	if (x > alpha)
+	{
+		if (x >= beta)
+		{
+			if(best>0)
+				AddHash(side, move_list[bestmove]);
+			return beta;
+		}
+		return x;
+	}
+
 	return alpha;
-
-int score = 0, bestmove = 0;
-int best = 0;
-
-GenCaptures(side,xside);
-
-for (int i = first_move[ply]; i < first_move[ply + 1]; ++i) 
-{
-		Sort(i);
-
-		if(x + piece_value[board[move_list[i].dest]] < alpha)
-		{
-			continue;
-		}
-
-	    score = ReCaptureSearch(move_list[i].start, move_list[i].dest);
-		
-		if(score>best)
-		{
-			best = score;
-			bestmove = i;
-		}
-}
-
-if(best>0)
-{
-	x += best;
-}
-if (x > alpha) 
-{
-	if (x >= beta)
-	{	
-		if(best>0)
-			AddHash(side, move_list[bestmove]);
-		return beta;
-	}
-	return x;
-}
-
-return alpha;
 }
 /*
 
@@ -291,69 +291,69 @@ queen for rook and bishop.
 
 */
 int ReCaptureSearch(int a,const int sq)
-{				
-int b;
-int c = 0;
-int t = 0;
-int score[12];
-
-memset(score,0,sizeof(score));
-score[0] = piece_value[board[sq]]; 
-score[1] = piece_value[board[a]];
-
-int total_score = 0;
-
-while(c < 10)
 {
-	if(!MakeRecapture(a,sq))
-			break;
-	t++;
-	nodes++;
-	c++;
+	int b;
+	int c = 0;
+	int t = 0;
+	int score[12];
 
-	b = LowestAttacker(side,xside,sq);
-	if(b>63)
-		b = LowestAttacker(side,xside,sq);
+	memset(score,0,sizeof(score));
+	score[0] = piece_value[board[sq]];
+	score[1] = piece_value[board[a]];
 
-	if(b>-1)
+	int total_score = 0;
+
+	while(c < 10)
 	{
-		score[c + 1] = piece_value[board[b]]; 
-		if(score[c] > score[c - 1] + score[c + 1])
+		if(!MakeRecapture(a,sq))
+				break;
+		t++;
+		nodes++;
+		c++;
+
+		b = LowestAttacker(side,xside,sq);
+		if(b>63)
+			b = LowestAttacker(side,xside,sq);
+
+		if(b>-1)
 		{
-			c--;
+			score[c + 1] = piece_value[board[b]];
+			if(score[c] > score[c - 1] + score[c + 1])
+			{
+				c--;
+				break;
+			}
+		}
+		else
+		{
 			break;
 		}
+		a = b;
 	}
-	else
+
+	while(c>1)
 	{
-		break;
+		if(score[c-1] >= score[c-2])
+			c -= 2;
+		else
+			break;
 	}
-	a = b;
-}
 
-while(c>1)
-{
-	if(score[c-1] >= score[c-2])
-		c -= 2;
+	for(int x=0; x < c; x++)
+	{
+	if(x%2 == 0)
+		total_score += score[x];
 	else
-		break;
-}
+		total_score -= score[x];
+	}
 
-for(int x=0; x < c; x++)
-{
-if(x%2 == 0)
-	total_score += score[x];
-else
-	total_score -= score[x];
-}
+	while(t)
+	{
+		UnMakeRecapture();
+		t--;
+	}
 
-while(t)
-{
-	UnMakeRecapture();
-	t--;
-}
-
-return total_score;
+	return total_score;
 }
 /*
 
@@ -416,16 +416,14 @@ If it finds it, it sets the move a high score so that it will be played first.
 */
 void SetHashMove()
 {
-
-for(int x=first_move[ply];x < first_move[ply+1];x++)
-{
- if(move_list[x].start == hash_start && move_list[x].dest == hash_dest)
- {
-	move_list[x].score = HASH_SCORE;
-	return;
-  }
-}
-
+	for(int x=first_move[ply];x < first_move[ply+1];x++)
+	{
+		if(move_list[x].start == hash_start && move_list[x].dest == hash_dest)
+		{
+			move_list[x].score = HASH_SCORE;
+			return;
+		}
+	}
 }
 /*
 
