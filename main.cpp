@@ -474,17 +474,20 @@ void xboard()
 		{
 			sscanf(line, "sd %d", &max_depth);
 			max_time = 1 << 25;
+			fixed_depth = 1;
 			continue;
 		}
 		if (!strcmp(command, "time")) 
 		{
 			sscanf(line, "time %d", &max_time);
+			max_time = max_time*10;
 			if(max_time < 200)
-			max_depth = 1;
+				max_depth = 1;
 			else
 			{
-				max_time /= 2;
+				max_time = (int) (max_time*0.01);
 				max_depth = MAX_PLY;
+				fixed_time = 1;
 			}
 			continue;
 		}
