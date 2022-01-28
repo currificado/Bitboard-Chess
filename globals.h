@@ -117,7 +117,7 @@ typedef struct {
 	int dest;
 	int promote;
 	int score;
-} move;
+} move_data;
 
 typedef struct {
 	int start;
@@ -161,7 +161,7 @@ extern const int nwdiag[64];
 extern const int nediag[64];
 
 extern int first_move[MAX_PLY];
-extern move move_list[MOVE_STACK];
+extern move_data move_list[MOVE_STACK];
 extern game game_list[GAME_STACK];
 
 extern int hash_start,hash_dest;
@@ -273,7 +273,7 @@ void AddKey(const int,const int,const int);
 U64 GetKey();
 U64 GetLock();
 void Free();
-void AddHash(const int s, const move m);
+void AddHash(const int s, const move_data m);
 bool LookUp(const int s);
 
 void AddPawnHash(const int s1, const int s2, const int wq, const int wk, const int bq, const int bk);

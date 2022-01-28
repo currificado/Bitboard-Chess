@@ -71,7 +71,7 @@ Adds an entry into the HashTable.
 If that index is already being used, it simply overwrites it.
 
 */
-void AddHash(const int s, const move m)
+void AddHash(const int s, const move_data m)
 {
 	hashp* ptr = &hashpos[s][currentkey];
 	ptr->hashlock = currentlock;

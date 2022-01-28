@@ -19,7 +19,7 @@ int qrb_moves[64][9];
 int knight_moves[64][9];
 int king_moves[64][9];
 
-move move_list[MOVE_STACK];
+move_data move_list[MOVE_STACK];
 int first_move[MAX_PLY];
 
 game game_list[GAME_STACK];
@@ -34,7 +34,7 @@ int piece_value[6] =
 	100, 300, 300, 500, 900, 10000
 };
 
-int init_color[64] = 
+int startpos_color[64] = 
 {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -46,7 +46,7 @@ int init_color[64] =
 	1, 1, 1, 1, 1, 1, 1, 1
 };
 
-int init_board[64] = 
+int startpos_board[64] = 
 {
 	3, 1, 2, 4, 5, 2, 1, 3,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -282,8 +282,8 @@ void InitBoard()
 
 	for (x = 0; x < 64; ++x)
 	{
-		if(init_board[x]<6)
-			AddPiece(init_color[x],init_board[x],x);
+		if(startpos_board[x]<6)
+			AddPiece(startpos_color[x],startpos_board[x],x);
 	}
 	side = 0;
 	xside = 1;
@@ -456,7 +456,7 @@ int GetBest(int ply);//
 
 void ShowAll(int ply)
 {
-	move *g;
+	move_data *g;
 	//DisplayBoard();
 	memset(done, 0, sizeof(done));
 
@@ -498,7 +498,7 @@ void ShowAll(int ply)
 
 int GetBest(int ply)
 {
-	move *g;
+	move_data *g;
 	int bestscore = -100000000;
 	int best = 0;
 	for(int i=0;i<first_move[ply+1]-first_move[ply];i++)
