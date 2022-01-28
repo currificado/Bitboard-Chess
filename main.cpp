@@ -102,7 +102,7 @@ int main()
 			{
 				printf("(no legal moves)\n");
 				computer_side = EMPTY;
-				//DisplayBoard();
+				DisplayBoard();
 				Gen(side,xside);
 				continue;
 			}
@@ -129,8 +129,8 @@ int main()
 			first_move[0] = 0;
 			Gen(side,xside);
 			PrintResult();
-			printf(" turn "); printf("%d",turn++);
-			//DisplayBoard();
+			printf(" turn "); printf("%d\n",turn++);
+			DisplayBoard();
 			continue;
 		}
 		printf("Enter move or command> ");
@@ -139,13 +139,13 @@ int main()
 
 		if (!strcmp(s, "d"))
 		{
-			//DisplayBoard();
+			DisplayBoard();
 			continue;
 		}
 		if (!strcmp(s, "f"))
 		{
 			flip = 1 - flip;
-			//DisplayBoard();
+			DisplayBoard();
 			continue;
 		}
 		if (!strcmp(s, "go"))
@@ -294,98 +294,87 @@ int ParseMove(char *s)
 		}
 	return -1;
 }
-/* 
-DisplayBoard() displays the board 
-The console object is only used to display in colour.
 
+void DisplaySquare(int colors, char piece)
+{
+	attron(COLOR_PAIR(colors));
+		if (piece == ' ')
+			printw("  ");
+		else
+			printw(" %c", piece);
+	attroff(COLOR_PAIR(colors));
+}
+/*
+DisplayBoard() displays the board using the curses library
+*/
 void DisplayBoard()
 {
-HANDLE hConsole;
-hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-int text = 15;
+	int i,c;
 
-	int i;
-	int x=0;
-	int c;
-
-	if(flip==0)
-		printf("\n8 ");
-	else
-		printf("\n1 ");
+	initscr();
+	scrollok( stdscr, TRUE );
+	start_color();
+	init_pair(MTY_WHI_SQR,COLOR_WHITE,COLOR_WHITE);
+	init_pair(MTY_BLK_SQR,COLOR_BLACK,COLOR_BLACK);
+	init_pair(WHI_SQR_W,COLOR_YELLOW,COLOR_WHITE);
+	init_pair(WHI_SQR_B,COLOR_BLUE,COLOR_WHITE);
+	init_pair(BLK_SQR_W,COLOR_YELLOW,COLOR_BLACK);
+	init_pair(BLK_SQR_B,COLOR_BLUE,COLOR_BLACK);
 
 	for (int j = 0; j < 64; ++j)
-    {
+	{
 		if(flip==0)
+		{
 			i = Flip[j];
-		else
+			if (j % 8 == 0)
+				printw("\n%d ", row[i]+1);
+		}
+		else if (flip==1)
+		{
 			i = 63-Flip[j];
-	    c = 6;
+			if (j % 8 == 0)
+				printw("\n%d ", row[j]+1);
+		}
+		c = EMPTY;
 		if(bit_units[0] & mask[i]) c = 0;
 		if(bit_units[1] & mask[i]) c = 1;
-    	switch(c)
-        {
+		switch (c)
+		{
 			case EMPTY:
-			if(board_color[i]==0)
-				text = 127;
-			else
-				text = 34;
-			SetConsoleTextAttribute(hConsole, text);
-
-				printf("  ");
-				SetConsoleTextAttribute(hConsole, 15);
+				if(board_color[i]==0)
+					DisplaySquare(MTY_WHI_SQR, ' ');
+				else
+					DisplaySquare(MTY_BLK_SQR, ' ');
 				break;
 			case 0:
 				if(board_color[i]==0)
-					text = 126;
+					DisplaySquare(WHI_SQR_W, piece_char[board[i]]);
 				else
-					text = 46;
-				SetConsoleTextAttribute(hConsole, text);
-				printf(" %c", piece_char[board[i]]);
-			SetConsoleTextAttribute(hConsole, 15);
+					DisplaySquare(BLK_SQR_W, piece_char[board[i]]);
 				break;
-
 			case 1:
 				if(board_color[i]==0)
-					text = 112;
+					DisplaySquare (WHI_SQR_B, piece_char[board[i]] + ('a' - 'A'));
 				else
-					text = 32;
-				SetConsoleTextAttribute(hConsole, text);
-				printf(" %c", piece_char[board[i]] + ('a' - 'A'));
-				SetConsoleTextAttribute(hConsole, 15);
+					DisplaySquare (BLK_SQR_B, piece_char[board[i]] + ('a' - 'A'));
 				break;
+		}
 
-			default:
-				printf(" %d.",c);
-				break;
-				
-		}
-		if((bit_all & mask[i]) && board[i]==6)
-		if(x==0)
-			printf(" %d",c);
-        else
-            printf("%d ",c);
-		if(board[i]<0 || board[i]>6)
-		if(x==0)
-			printf(" %d.",board[i]);
-        else
-            printf("%d ",board[i]);
-		if(flip==0)
-		{
-		if ((j + 1) % 8 == 0 && j != 63)
-			printf("\n%d ", row[i]);
-		}
-		else
-		{
-		if ((j + 1) % 8 == 0 && row[i] != 7)
-			printf("\n%d ",  row[j]+2);
-		}
 	}
-	if(flip==0)
-		printf("\n\n   a b c d e f g h\n\n");
-	else
-		printf("\n\n   h g f e d c b a\n\n");
+	if (flip==0)
+		printw("\n\n   a b c d e f g h\n\n");
+	else if(flip==1)
+		printw("\n\n   h g f e d c b a\n\n");
+
+	printw("Press 'q' to return to menu.\n");
+
+	refresh();
+	noecho();
+	while (getch() !='q');
+	erase();
+	endwin();
 }
-*/
+
 /* 
 xboard() is a substitute for main() that is XBoard
 and WinBoard compatible. 
@@ -730,7 +719,7 @@ int LoadDiagram(char* file,int num)
 	}
 
 	CloseDiagram();
-	//DisplayBoard();
+	DisplayBoard();
 	NewPosition();
 	Gen(side,xside);
 	printf(" diagram # %d \n",num+count);

@@ -1,5 +1,6 @@
 #include <memory.h>
 //#include <conio.h>
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -112,6 +113,13 @@ void ShowAll(int ply);//
 #define HASH_SCORE    100000000
 #define CAPTURE_SCORE 10000000
 
+#define MTY_WHI_SQR 1
+#define MTY_BLK_SQR 2
+#define WHI_SQR_W 3
+#define WHI_SQR_B 4
+#define BLK_SQR_W 5
+#define BLK_SQR_B 6
+
 typedef struct {
 	int start;
 	int dest;
@@ -148,8 +156,8 @@ extern int castle_mask[64];
 extern int nodes;
 
 extern int board[64];
-extern int init_color[64];
-extern int init_board[64];
+extern int startpos_color[64];
+extern int startpos_board[64];
 
 extern int history[64][64];
 
